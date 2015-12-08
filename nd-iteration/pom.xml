@@ -4,12 +4,12 @@
 
 	<groupId>de.javagl</groupId>
 	<artifactId>nd-iteration</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<parent>
 		<groupId>de.javagl</groupId>
 		<artifactId>nd-parent</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
     <build>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>de.javagl</groupId>
 			<artifactId>nd-tuples</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
