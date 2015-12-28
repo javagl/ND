@@ -164,5 +164,19 @@ operating on `DoubleTuple` instances.
          tuple, Double.POSITIVE_INFINITY, Math::min);
      System.out.println(min); // Prints 1.0
 
+
+---
      
+# Change log:
+
+Version 0.0.2-SNAPSHOT:
+
+* Changed the `DoubleTuples#variance` methods to return 
+the *bias-corrected sample variance*
+* Added `DoubleTuples#geometricMean` and `DoubleTuples#harmonicMean`
+     
+
+Version 0.0.1, 2015-12-08:
+
+* Initial commit
      

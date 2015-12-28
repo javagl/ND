@@ -20,6 +20,8 @@ import org.junit.rules.ExpectedException;
 @SuppressWarnings("javadoc")
 public class TestDoubleTuples
 {
+    private static final double DOUBLE_EPSILON = 1e-8;
+    
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -410,7 +412,7 @@ public class TestDoubleTuples
         MutableDoubleTuple n = 
             DoubleTuples.normalize(t0, null);
         double length = DoubleTuples.computeL2(n);
-        assertEquals(1.0, length, 1e-8);
+        assertEquals(1.0, length, DOUBLE_EPSILON);
     }
     
     @Test
@@ -418,7 +420,7 @@ public class TestDoubleTuples
     {
         MutableDoubleTuple t0 = create();
         double length = DoubleTuples.computeL2(t0);
-        assertEquals(11.832159566199232, length, 1e-8);
+        assertEquals(11.832159566199232, length, DOUBLE_EPSILON);
     }
 
     @Test
@@ -454,6 +456,24 @@ public class TestDoubleTuples
     }
     
     @Test
+    public void testGeometricMean()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(1.0, 2.0, 3.0, 4.0, 5.0);
+        double expected = 2.605171084697352;
+        double actual = DoubleTuples.geometricMean(t0);
+        assertEquals(expected, actual, DOUBLE_EPSILON);
+    }
+    
+    @Test
+    public void testHarmonicMean()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(1.0, 2.0, 3.0, 4.0, 5.0);
+        double expected = 2.18978102189781;
+        double actual = DoubleTuples.harmonicMean(t0);
+        assertEquals(expected, actual, DOUBLE_EPSILON);
+    }
+    
+    @Test
     public void testInterpolate()
     {
         MutableDoubleTuple t0 = DoubleTuples.of(1.0, 2.0, 3.0);
@@ -483,8 +503,8 @@ public class TestDoubleTuples
             DoubleTuples.standardize(t0, null);
         double mean = DoubleTuples.arithmeticMean(standardized);
         double variance = DoubleTuples.variance(standardized);
-        assertEquals(0.0, mean, 1e-8);
-        assertEquals(1.0, variance, 1e-8);
+        assertEquals(0.0, mean, DOUBLE_EPSILON);
+        assertEquals(1.0, variance, DOUBLE_EPSILON);
     }
     
     @Test
@@ -493,7 +513,7 @@ public class TestDoubleTuples
         MutableDoubleTuple t0 = DoubleTuples.of(1.0, 2.0, 3.0);
         double expected = 2.0;
         double actual = DoubleTuples.arithmeticMean(t0);
-        assertEquals(expected, actual, 1e-8);
+        assertEquals(expected, actual, DOUBLE_EPSILON);
     }
     
     @Test
@@ -501,7 +521,7 @@ public class TestDoubleTuples
     {
         MutableDoubleTuple t0 = create();
         double variance = DoubleTuples.variance(t0);
-        assertEquals(5.25, variance, 1e-8);
+        assertEquals(6.0, variance, DOUBLE_EPSILON);
     }
     
     @Test
@@ -509,7 +529,7 @@ public class TestDoubleTuples
     {
         MutableDoubleTuple t0 = create();
         double standardDeviation = DoubleTuples.standardDeviation(t0);
-        assertEquals(2.29128784747792, standardDeviation, 1e-8);
+        assertEquals(2.449489742783178, standardDeviation, DOUBLE_EPSILON);
     }
     
     @Test
@@ -519,8 +539,10 @@ public class TestDoubleTuples
         double mean = DoubleTuples.arithmeticMean(t0);
         double standardDeviation = 
             DoubleTuples.standardDeviationFromMean(t0, mean);
-        assertEquals(2.29128784747792, standardDeviation, 1e-8);
+        assertEquals(2.449489742783178, standardDeviation, DOUBLE_EPSILON);
     }
+
+    
     
     @Test
     public void testContainsNaN()

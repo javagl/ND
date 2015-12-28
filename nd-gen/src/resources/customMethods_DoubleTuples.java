@@ -1,3 +1,6 @@
+import de.javagl.nd.tuples.d.DoubleTuple;
+import de.javagl.nd.tuples.d.DoubleTupleFunctions;
+
 
     /**
      * Fill the given tuple with random values in
@@ -243,7 +246,30 @@
             t0, t1, (a,b)->(a+alpha*(b-a)), result);
     }
 
+    /**
+     * Returns the geometric mean of the given tuple
+     *
+     * @param t The input tuple
+     * @return The mean
+     */
+    public static double geometricMean(DoubleTuple t)
+    {
+        double product = DoubleTupleFunctions.reduce(t, 0.0, (a,b) -> (a*b));
+        return Math.pow(product, 1.0 / t.getSize());
+    }
 
+    /**
+     * Returns the harmonic mean of the given tuple
+     *
+     * @param t The input tuple
+     * @return The mean
+     */
+    public static double harmonicMean(DoubleTuple t)
+    {
+        double s =
+            DoubleTupleFunctions.reduce(t, 0.0, (a, b) -> (a + (1.0 / b)));
+        return t.getSize() / s;
+    }
 
     /**
      * Returns the standard deviation of the given variances (that is,
@@ -299,9 +325,9 @@
     }
 
     /**
-     * Returns the variance of the given tuple. The method
-     * will compute the arithmetic mean, and then compute the actual result
-     * with the {@link #variance(DoubleTuple, double)} method.
+     * Returns the bias-corrected sample variance of the given tuple. The
+     * method will compute the arithmetic mean, and then compute the actual
+     * result with the {@link #variance(DoubleTuple, double)} method.
      *
      * @param t The input tuple
      * @return The variance
@@ -315,7 +341,7 @@
     }
 
     /**
-     * Returns the variance of the given tuple.
+     * Returns the bias-corrected sample variance of the given tuple.
      *
      * @param t The input tuple
      * @param mean The mean, which may have been computed before with
@@ -331,7 +357,7 @@
             double difference = t.get(i) - mean;
             variance += difference * difference;
         }
-        return variance / d;
+        return variance / (d - 1);
     }
 
 
