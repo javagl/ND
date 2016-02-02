@@ -19,5 +19,5 @@
 /nd-gen/.classpath
 /nd-gen/.project
 /nd-gen/target
-
 /.project
+/nd-gen/src/generated
