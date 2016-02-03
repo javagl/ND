@@ -478,7 +478,7 @@ public class $type.uppercaseName$Tuples
      * the size of the input tuple plus one.
      */
     public static Mutable$type.uppercaseName$Tuple insertElementAt(
-        Mutable$type.uppercaseName$Tuple t, int index, $type.name$ value, 
+        $type.uppercaseName$Tuple t, int index, $type.name$ value, 
         Mutable$type.uppercaseName$Tuple result)
     {
         if (index < 0)
@@ -534,7 +534,7 @@ public class $type.uppercaseName$Tuples
      * the size of the input tuple minus one.
      */
     public static Mutable$type.uppercaseName$Tuple removeElementAt(
-        Mutable$type.uppercaseName$Tuple t, int index, Mutable$type.uppercaseName$Tuple result)
+        $type.uppercaseName$Tuple t, int index, Mutable$type.uppercaseName$Tuple result)
     {
         Utils.checkForValidIndex(index, t.getSize());
         if (result == null)

@@ -479,7 +479,7 @@ public class LongTuples
      * the size of the input tuple plus one.
      */
     public static MutableLongTuple insertElementAt(
-        MutableLongTuple t, int index, long value, 
+        LongTuple t, int index, long value, 
         MutableLongTuple result)
     {
         if (index < 0)
@@ -535,7 +535,7 @@ public class LongTuples
      * the size of the input tuple minus one.
      */
     public static MutableLongTuple removeElementAt(
-        MutableLongTuple t, int index, MutableLongTuple result)
+        LongTuple t, int index, MutableLongTuple result)
     {
         Utils.checkForValidIndex(index, t.getSize());
         if (result == null)

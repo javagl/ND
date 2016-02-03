@@ -477,7 +477,7 @@ public class DoubleTuples
      * the size of the input tuple plus one.
      */
     public static MutableDoubleTuple insertElementAt(
-        MutableDoubleTuple t, int index, double value, 
+        DoubleTuple t, int index, double value, 
         MutableDoubleTuple result)
     {
         if (index < 0)
@@ -533,7 +533,7 @@ public class DoubleTuples
      * the size of the input tuple minus one.
      */
     public static MutableDoubleTuple removeElementAt(
-        MutableDoubleTuple t, int index, MutableDoubleTuple result)
+        DoubleTuple t, int index, MutableDoubleTuple result)
     {
         Utils.checkForValidIndex(index, t.getSize());
         if (result == null)

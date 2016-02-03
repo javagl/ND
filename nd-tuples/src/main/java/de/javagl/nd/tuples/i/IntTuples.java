@@ -479,7 +479,7 @@ public class IntTuples
      * the size of the input tuple plus one.
      */
     public static MutableIntTuple insertElementAt(
-        MutableIntTuple t, int index, int value, 
+        IntTuple t, int index, int value, 
         MutableIntTuple result)
     {
         if (index < 0)
@@ -535,7 +535,7 @@ public class IntTuples
      * the size of the input tuple minus one.
      */
     public static MutableIntTuple removeElementAt(
-        MutableIntTuple t, int index, MutableIntTuple result)
+        IntTuple t, int index, MutableIntTuple result)
     {
         Utils.checkForValidIndex(index, t.getSize());
         if (result == null)
