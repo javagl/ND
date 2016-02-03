@@ -106,7 +106,8 @@ public class DoubleTupleCollections
     public static List<MutableDoubleTuple> create(
         int dimensions, int numElements)
     {
-        List<MutableDoubleTuple> list = new ArrayList<MutableDoubleTuple>();
+        List<MutableDoubleTuple> list = 
+            new ArrayList<MutableDoubleTuple>(numElements);
         create(dimensions, numElements, list);
         return list;
     }

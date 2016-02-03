@@ -351,7 +351,11 @@ public class DoubleTuples
 
 
     /**
-     * Reverse the given tuple.   
+     * Reverse the given tuple. This will create a new tuple whose elements
+     * are the same as in the given tuple, but in reverse order.<br>
+     * <br>
+     * In order to create a reversed <i>view</i> on a tuple, the 
+     * {@link #reversed(DoubleTuple)} method may be used.   
      * 
      * @param t The input tuple
      * @param result The result tuple
@@ -388,7 +392,11 @@ public class DoubleTuples
     /**
      * Creates a new tuple that is a reversed <i>view</i> on the given
      * tuple. Changes in the given tuple will be visible in the returned
-     * tuple.
+     * tuple.<br>
+     * <br>
+     * In order to create a new, reversed tuple from a given one, the
+     * {@link #reverse(DoubleTuple, MutableDoubleTuple)} method may 
+     * be used.
      * 
      * @param t The tuple
      * @return The reversed view on the tuple
@@ -416,7 +424,11 @@ public class DoubleTuples
     /**
      * Creates a new tuple that is a reversed <i>view</i> on the given
      * tuple. Changes in the given tuple will be visible in the returned
-     * tuple, and vice versa.
+     * tuple, and vice versa.<br>
+     * <br>
+     * In order to create a new, reversed tuple from a given one, the
+     * {@link #reverse(DoubleTuple, MutableDoubleTuple)} method may 
+     * be used.
      * 
      * @param t The tuple
      * @return The reversed view on the tuple
@@ -447,9 +459,110 @@ public class DoubleTuples
         };
     }
 
+    /**
+     * Add an element with the given value at the given index to the given 
+     * tuple, creating a new tuple whose {@link Tuple#getSize() size} is
+     * one larger than that of the given tuple.
+     *  
+     * @param t The tuple
+     * @param index The index where the element should be added
+     * @param value The value of the new element
+     * @param result The result tuple
+     * @return The result tuple
+     * @throws IndexOutOfBoundsException If the given index is negative
+     * or greater than the {@link Tuple#getSize() size} of the given
+     * tuple
+     * @throws IllegalArgumentException If the given result tuple is not
+     * <code>null</code> and its {@link Tuple#getSize() size} is not 
+     * the size of the input tuple plus one.
+     */
+    public static MutableDoubleTuple insertElementAt(
+        MutableDoubleTuple t, int index, double value, 
+        MutableDoubleTuple result)
+    {
+        if (index < 0)
+        {
+            throw new IndexOutOfBoundsException(
+                "Index "+index+" is negative");
+        }
+        if (index > t.getSize()) // Note: index==t.getSize() is valid!
+        {
+            throw new IndexOutOfBoundsException(
+                "Index "+index+", size "+t.getSize());
+        }
+        if (result == null)
+        {
+            result = DoubleTuples.create(t.getSize() + 1);
+        }
+        else if (result.getSize() != t.getSize() + 1)
+        {
+            throw new IllegalArgumentException(
+                "Input size is " + t.getSize() + ", result size must be " +
+                (t.getSize() + 1) + " but is " + result.getSize());
+        }
+        int counter = 0;
+        for (int i=0; i<index; i++)
+        {
+            result.set(counter, t.get(i));
+            counter++;
+        }
+        result.set(counter, value);
+        counter++;
+        for (int i=index; i<t.getSize(); i++)
+        {
+            result.set(counter, t.get(i));
+            counter++;
+        }
+        return result;
+    }
 
     /**
-     * Clamp the components of the given tuple to be in the specified range,
+     * Remove the element at the given index from the given tuple, 
+     * creating a new tuple whose {@link Tuple#getSize() size} is
+     * one smaller than that of the given tuple.
+     *  
+     * @param t The tuple
+     * @param index The index of the element that should be removed
+     * @param result The result tuple
+     * @return The result tuple
+     * @throws IndexOutOfBoundsException If the given index is negative
+     * or not smaller than the {@link Tuple#getSize() size} of the given
+     * tuple
+     * @throws IllegalArgumentException If the given result tuple is not
+     * <code>null</code> and its {@link Tuple#getSize() size} is not 
+     * the size of the input tuple minus one.
+     */
+    public static MutableDoubleTuple removeElementAt(
+        MutableDoubleTuple t, int index, MutableDoubleTuple result)
+    {
+        Utils.checkForValidIndex(index, t.getSize());
+        if (result == null)
+        {
+            result = DoubleTuples.create(t.getSize() - 1);
+        }
+        else if (result.getSize() != t.getSize() - 1)
+        {
+            throw new IllegalArgumentException(
+                "Input size is " + t.getSize() + ", result size must be " +
+                (t.getSize() - 1) + " but is " + result.getSize());
+        }
+        int counter = 0;
+        for (int i=0; i<index; i++)
+        {
+            result.set(counter, t.get(i));
+            counter++;
+        }
+        for (int i=index+1; i<t.getSize(); i++)
+        {
+            result.set(counter, t.get(i));
+            counter++;
+        }
+        return result;
+    }
+
+
+    /**
+     * Clamp the elements of the given tuple to be in the specified range,
      * and write the result into the given result tuple.
      * 
      * @param t The input tuple
@@ -474,7 +587,7 @@ public class DoubleTuples
     }
 
     /**
-     * Clamp the components of the given tuple to be in the specified range,
+     * Clamp the elements of the given tuple to be in the specified range,
      * and write the result into the given result tuple.
      * 
      * @param t The input tuple
@@ -600,7 +713,7 @@ public class DoubleTuples
 
     /**
      * Add the given value to all elements of the given input
-     * tuples, and store the result in the given result tuple.
+     * tuple, and store the result in the given result tuple.
      *
      * @param t0 The first input tuple
      * @param value The value to add
@@ -1476,13 +1589,7 @@ public class DoubleTuples
     public static MutableDoubleTuple normalizeElements(
         DoubleTuple t, double min, double max, MutableDoubleTuple result)
     {
-        double range = max-min;
-        double actualMin = min(t);
-        double actualMax = max(t);
-        double invDelta = 1.0 / (actualMax - actualMin);
-        double scaling = invDelta * range;
-        return DoubleTupleFunctions.apply(
-            t, (a)->(min + (a - actualMin) * scaling), result);
+        return rescaleElements(t, min(t), max(t), min, max, result);
     }
 
     /**
@@ -1588,7 +1695,7 @@ public class DoubleTuples
      */
     public static double harmonicMean(DoubleTuple t)
     {
-        double s = 
+        double s =
             DoubleTupleFunctions.reduce(t, 0.0, (a, b) -> (a + (1.0 / b)));
         return t.getSize() / s;
     }
@@ -1633,7 +1740,7 @@ public class DoubleTuples
         return DoubleTupleFunctions.apply(
             t, (a) -> ((a - mean) * invStandardDeviation), result);
     }
-    
+
     /**
      * Returns the arithmetic mean of the given tuple
      *
@@ -1647,8 +1754,8 @@ public class DoubleTuples
     }
 
     /**
-     * Returns the bias-corrected sample variance of the given tuple. The 
-     * method will compute the arithmetic mean, and then compute the actual 
+     * Returns the bias-corrected sample variance of the given tuple. The
+     * method will compute the arithmetic mean, and then compute the actual
      * result with the {@link #variance(DoubleTuple, double)} method.
      *
      * @param t The input tuple
@@ -1734,6 +1841,26 @@ public class DoubleTuples
         }
         return false;
     }
+    
+    /**
+     * Replace all occurrences of "Not A Number" in the given tuple
+     * with the given value, and store the result in the given 
+     * result tuple
+     * 
+     * @param t The tuple
+     * @param newValue The value that should replace the NaN value
+     * @param result The tuple that will store the result
+     * @return The result tuple
+     * @throws IllegalArgumentException If the given tuples do not
+     * have the same {@link Tuple#getSize() size}
+     */
+    public static MutableDoubleTuple replaceNaN(
+        DoubleTuple t, double newValue, MutableDoubleTuple result)
+    {
+        return DoubleTupleFunctions.apply(
+            t, d -> Double.isNaN(d) ? newValue : d, result);
+    }
+    
 
 
     // End   of custom methods

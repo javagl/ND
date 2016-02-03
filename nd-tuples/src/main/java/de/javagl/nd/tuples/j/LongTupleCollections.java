@@ -106,7 +106,8 @@ public class LongTupleCollections
     public static List<MutableLongTuple> create(
         int dimensions, int numElements)
     {
-        List<MutableLongTuple> list = new ArrayList<MutableLongTuple>();
+        List<MutableLongTuple> list = 
+            new ArrayList<MutableLongTuple>(numElements);
         create(dimensions, numElements, list);
         return list;
     }

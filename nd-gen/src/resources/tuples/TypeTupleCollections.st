@@ -106,7 +106,8 @@ public class $type.uppercaseName$TupleCollections
     public static List<Mutable$type.uppercaseName$Tuple> create(
         int dimensions, int numElements)
     {
-        List<Mutable$type.uppercaseName$Tuple> list = new ArrayList<Mutable$type.uppercaseName$Tuple>();
+        List<Mutable$type.uppercaseName$Tuple> list = 
+            new ArrayList<Mutable$type.uppercaseName$Tuple>(numElements);
         create(dimensions, numElements, list);
         return list;
     }

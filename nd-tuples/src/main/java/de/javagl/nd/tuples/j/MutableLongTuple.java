@@ -64,7 +64,6 @@ public interface MutableLongTuple extends LongTuple
 
     /**
      * {@inheritDoc}
-     * Changes in this tuple will be visible in the returned tuple.
      * Changes in the returned tuple will be visible in this tuple.
      */
     @Override

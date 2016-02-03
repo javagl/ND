@@ -65,7 +65,6 @@ public interface Mutable$type.uppercaseName$Tuple extends $type.uppercaseName$Tu
 
     /**
      * {@inheritDoc}
-     * Changes in this tuple will be visible in the returned tuple.
      * Changes in the returned tuple will be visible in this tuple.
      */
     @Override

@@ -7,7 +7,7 @@
      */
     public static MutableDoubleTuple toDoubleTuple(LongTuple longTuple)
     {
-        int d = intTuple.getSize();
+        int d = longTuple.getSize();
         MutableDoubleTuple doubleTuple = DoubleTuples.create(d);
         for (int i=0; i<d; i++)
         {

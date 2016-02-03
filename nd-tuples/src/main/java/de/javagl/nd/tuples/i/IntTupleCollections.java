@@ -106,7 +106,8 @@ public class IntTupleCollections
     public static List<MutableIntTuple> create(
         int dimensions, int numElements)
     {
-        List<MutableIntTuple> list = new ArrayList<MutableIntTuple>();
+        List<MutableIntTuple> list = 
+            new ArrayList<MutableIntTuple>(numElements);
         create(dimensions, numElements, list);
         return list;
     }

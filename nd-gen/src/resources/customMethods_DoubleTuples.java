@@ -1,6 +1,3 @@
-import de.javagl.nd.tuples.d.DoubleTuple;
-import de.javagl.nd.tuples.d.DoubleTupleFunctions;
-
 
     /**
      * Fill the given tuple with random values in
@@ -154,13 +151,7 @@ import de.javagl.nd.tuples.d.DoubleTupleFunctions;
     public static MutableDoubleTuple normalizeElements(
         DoubleTuple t, double min, double max, MutableDoubleTuple result)
     {
-        double range = max-min;
-        double actualMin = min(t);
-        double actualMax = max(t);
-        double invDelta = 1.0 / (actualMax - actualMin);
-        double scaling = invDelta * range;
-        return DoubleTupleFunctions.apply(
-            t, (a)->(min + (a - actualMin) * scaling), result);
+        return rescaleElements(t, min(t), max(t), min, max, result);
     }
 
     /**
@@ -254,7 +245,7 @@ import de.javagl.nd.tuples.d.DoubleTupleFunctions;
      */
     public static double geometricMean(DoubleTuple t)
     {
-        double product = DoubleTupleFunctions.reduce(t, 0.0, (a,b) -> (a*b));
+        double product = DoubleTupleFunctions.reduce(t, 1.0, (a,b) -> (a*b));
         return Math.pow(product, 1.0 / t.getSize());
     }
 
@@ -412,4 +403,24 @@ import de.javagl.nd.tuples.d.DoubleTupleFunctions;
         }
         return false;
     }
+    
+    /**
+     * Replace all occurrences of "Not A Number" in the given tuple
+     * with the given value, and store the result in the given 
+     * result tuple
+     * 
+     * @param t The tuple
+     * @param newValue The value that should replace the NaN value
+     * @param result The tuple that will store the result
+     * @return The result tuple
+     * @throws IllegalArgumentException If the given tuples do not
+     * have the same {@link Tuple#getSize() size}
+     */
+    public static MutableDoubleTuple replaceNaN(
+        DoubleTuple t, double newValue, MutableDoubleTuple result)
+    {
+        return DoubleTupleFunctions.apply(
+            t, d -> Double.isNaN(d) ? newValue : d, result);
+    }
+    
 

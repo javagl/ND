@@ -120,9 +120,72 @@ public class TestDoubleTuples
         
         reversed.set(0, 234.0);
         assertEquals(t0.get(4), 234.0, 0.0);
-        
+    }
+
+    @Test
+    public void testInsertElementAt()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,3,4);
+        MutableDoubleTuple expected = DoubleTuples.of(0,1,2,3,4);
+        MutableDoubleTuple actual = 
+            DoubleTuples.insertElementAt(t0, 2, 2.0, null);
+        assertEquals(expected, actual);
     }
     
+    @Test
+    public void testInsertElementAtWithInvalidResult()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,3,4);
+        MutableDoubleTuple result = DoubleTuples.of(0,1,3,4);
+        thrown.expect(IllegalArgumentException.class);
+        DoubleTuples.insertElementAt(t0, 2, 2.0, result);
+    }
+    
+    @Test
+    public void testInsertElementAtWithInvalidIndex()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,2,3);
+        thrown.expect(IndexOutOfBoundsException.class);
+        DoubleTuples.insertElementAt(t0, 123, 2.0, null);
+    }
+
+    @Test
+    public void testInsertElementAtWithLastValidIndex()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,2,3);
+        MutableDoubleTuple expected = DoubleTuples.of(0,1,2,3,4);
+        MutableDoubleTuple actual = 
+            DoubleTuples.insertElementAt(t0, 4, 4.0, null);
+        assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void testRemoveElementAt()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,2,3);
+        MutableDoubleTuple expected = DoubleTuples.of(0,1,3);
+        MutableDoubleTuple actual = 
+            DoubleTuples.removeElementAt(t0, 2, null);
+        assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void testRemoveElementAtWithInvalidResult()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,2,3);
+        MutableDoubleTuple result = DoubleTuples.of(0,1,2,3);
+        thrown.expect(IllegalArgumentException.class);
+        DoubleTuples.removeElementAt(t0, 2, result);
+    }
+    
+    @Test
+    public void testRemoveElementWithInvalidIndex()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(0,1,2,3);
+        thrown.expect(IndexOutOfBoundsException.class);
+        DoubleTuples.removeElementAt(t0, 123, null);
+    }
+
     @Test
     public void testClampElement()
     {
@@ -161,7 +224,7 @@ public class TestDoubleTuples
     }
     
     @Test
-    public void testAddElement()
+    public void testAddToElements()
     {
         MutableDoubleTuple t0 = create();
         MutableDoubleTuple expected = 
@@ -172,7 +235,7 @@ public class TestDoubleTuples
     }
     
     @Test
-    public void testSubtractElement()
+    public void testSubtractFromElements()
     {
         MutableDoubleTuple t0 = create();
         MutableDoubleTuple expected = 
@@ -183,7 +246,7 @@ public class TestDoubleTuples
     }
     
     @Test
-    public void testMultiplyElement()
+    public void testMultiplyElements()
     {
         MutableDoubleTuple t0 = create();
         MutableDoubleTuple expected = 
@@ -542,8 +605,6 @@ public class TestDoubleTuples
         assertEquals(2.449489742783178, standardDeviation, DOUBLE_EPSILON);
     }
 
-    
-    
     @Test
     public void testContainsNaN()
     {
@@ -551,6 +612,15 @@ public class TestDoubleTuples
         MutableDoubleTuple t1 = DoubleTuples.of(1.0, 2.0, 3.0);
         assertTrue (DoubleTuples.containsNaN(t0));
         assertFalse(DoubleTuples.containsNaN(t1));
+    }
+    
+    @Test
+    public void testReplaceNaN()
+    {
+        MutableDoubleTuple t0 = DoubleTuples.of(1.0, Double.NaN, 3.0);
+        MutableDoubleTuple expected = DoubleTuples.of(1.0, 2.0, 3.0);
+        MutableDoubleTuple actual = DoubleTuples.replaceNaN(t0, 2.0, null);
+        assertEquals(expected, actual);
     }
     
     

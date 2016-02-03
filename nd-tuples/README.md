@@ -174,6 +174,9 @@ Version 0.0.2-SNAPSHOT:
 * Changed the `DoubleTuples#variance` methods to return 
 the *bias-corrected sample variance*
 * Added `DoubleTuples#geometricMean` and `DoubleTuples#harmonicMean`
+* Added `insertElementAt` and `removeElementAt` to the tuples classes,
+  to create new tuples with additional or removed elements
+* Added `replaceNaN` in the `DoubleTuples` class
      
 
 Version 0.0.1, 2015-12-08:
