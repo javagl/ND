@@ -26,37 +26,21 @@
  */
 package de.javagl.nd.tuples.$type.letter$;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
 
 /**
- * Abstract base implementation of a {@link $type.uppercaseName$Tuple}.<br>
+ * Abstract base implementation of a {@link Mutable$type.uppercaseName$Tuple}.<br>
  * <br>
  * This class implements the {@link #toString()}, {@link #equals(Object)},
  * {@link #hashCode()} and {@link #subTuple(int, int)} methods 
  * canonically.<br>
- * <br> 
- * To create an implementation of a <code>$type.uppercaseName$Tuple</code>, only the  
- * {@link $type.uppercaseName$Tuple#getSize()} and {@link $type.uppercaseName$Tuple#get(int)} methods
- * have to be implemented.<br>
- * <br>
  */
-public abstract class Abstract$type.uppercaseName$Tuple implements $type.uppercaseName$Tuple
+public abstract class AbstractMutable$type.uppercaseName$Tuple extends Abstract$type.uppercaseName$Tuple
+    implements Mutable$type.uppercaseName$Tuple
 {
-    @Override
-    public String toString()
-    {
-        return $type.uppercaseName$Tuples.toString(this);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return $type.uppercaseName$Tuples.hashCode(this);
-    }
-
-    @Override
-    public boolean equals(Object object)
-    {
-        return $type.uppercaseName$Tuples.equals(this, object);
-    }
-
+    // No additional methods
 }

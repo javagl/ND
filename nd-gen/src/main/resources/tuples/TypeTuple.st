@@ -30,6 +30,12 @@ import java.util.stream.$type.uppercaseName$Stream;
 
 import de.javagl.nd.tuples.Tuple;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Interface describing an N-dimensional tuple consisting
  * of <code>$type.name$</code> values.

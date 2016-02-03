@@ -29,6 +29,12 @@ package de.javagl.nd.tuples.j;
 import de.javagl.nd.tuples.Tuple;
 import de.javagl.nd.tuples.Utils;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Interface describing an N-dimensional mutable tuple of
  * <code>long</code> values.

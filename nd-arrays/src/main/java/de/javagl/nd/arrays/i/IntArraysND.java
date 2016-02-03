@@ -40,6 +40,12 @@ import de.javagl.nd.tuples.i.IntTuples;
 import de.javagl.nd.tuples.i.MutableIntTuple;
 import de.javagl.nd.iteration.tuples.i.IntTupleIterables;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Methods related to {@link IntArrayND} instances
  */
@@ -286,7 +292,7 @@ public class IntArraysND
         {
             return 0;
         }
-        return array.stream().parallel().sum();
+        return array.stream().parallel().mapToInt(Integer::hashCode).sum();
     }
 
     /**

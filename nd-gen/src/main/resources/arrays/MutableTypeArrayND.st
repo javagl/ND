@@ -26,54 +26,42 @@
  */
 package de.javagl.nd.arrays.$type.letter$;
 
-import java.util.function.ToIntFunction;
-
-import de.javagl.nd.arrays.Indexers;
-import de.javagl.nd.tuples.Order;
 import de.javagl.nd.tuples.i.IntTuple;
 
-/**
- * Default implementation of a {@link Mutable$type.uppercaseName$ArrayND}
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
  */
-class Default$type.uppercaseName$ArrayND
-    extends AbstractMutable$type.uppercaseName$ArrayND
-    implements Mutable$type.uppercaseName$ArrayND
+
+/**
+ * Interface describing a mutable multidimensional
+ * array of <code>$type.name$</code> values.
+ */
+public interface Mutable$type.uppercaseName$ArrayND extends $type.uppercaseName$ArrayND
 {
     /**
-     * The underlying data
-     */
-    private final $type.name$ data[];
-
-    /**
-     * A function that converts multidimensional indices to 1D indices
-     */
-    private final ToIntFunction<IntTuple> indexer;
-
-    /**
-     * Create a new array with the given size.
+     * Set the value at the given position.
      *
-     * @param size The size
-     * @throws NullPointerException If the given size is <code>null</code>
-     * @throws IllegalArgumentException If the given size is negative
-     * along any dimension
+     * @param indices The position
+     * @param value The value to set.
+     * @throws IllegalArgumentException If the given indices do not have 
+     * the same {@link IntTuple#getSize() size} as the {@link #getSize()
+     * size} of this array. 
+     * @throws IndexOutOfBoundsException May be thrown if the indices are
+     * not valid. That is, if <tt>fromIndex &lt; 0</tt> or
+     * <tt>toIndex &gt; size</tt> or <tt>fromIndex &gt; toIndex</tt>
+     * for any dimension. But explicit bounds checking is not guaranteed.
      */
-    Default$type.uppercaseName$ArrayND(IntTuple size)
-    {
-        super(size, Order.LEXICOGRAPHICAL);
-        this.data = new $type.name$[getTotalSize()];
-        this.indexer = Indexers.lexicographicalIndexer(size);
-    }
+    void set(IntTuple indices, $type.name$ value);
 
+    /**
+     * {@inheritDoc}
+     * Changes in this array will be visible in the returned array.
+     * Changes in the returned array will be visible in this array.
+     */
     @Override
-    public void set(IntTuple indices, $type.name$ value)
-    {
-        data[indexer.applyAsInt(indices)] = value;
-    }
-
-    @Override
-    public $type.name$ get(IntTuple indices)
-    {
-        return data[indexer.applyAsInt(indices)];
-    }
+    Mutable$type.uppercaseName$ArrayND subArray(
+        IntTuple fromIndices, IntTuple toIndices);
 
 }

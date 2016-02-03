@@ -26,54 +26,60 @@
  */
 package de.javagl.nd.arrays.$type.letter$;
 
-import java.util.Objects;
-import java.util.function.ToIntFunction;
-
-import de.javagl.nd.arrays.Indexers;
+import de.javagl.nd.arrays.AbstractArrayND;
 import de.javagl.nd.tuples.Order;
-import de.javagl.nd.tuples.$type.letter$.$type.uppercaseName$Tuple;
 import de.javagl.nd.tuples.i.IntTuple;
 
-/**
- * Implementation of a {@link $type.uppercaseName$ArrayND} that is backed by a 
- * {@link $type.uppercaseName$Tuple}
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
  */
-class Tuple$type.uppercaseName$ArrayND
-    extends Abstract$type.uppercaseName$ArrayND
+
+/**
+ * Abstract base implementation of a {@link $type.uppercaseName$ArrayND}.<br>
+ * <br>
+ * This class implements the {@link #toString()}, {@link #equals(Object)},
+ * {@link #hashCode()} and {@link #subArray(IntTuple, IntTuple)} methods 
+ * canonically.<br>
+ */
+abstract class Abstract$type.uppercaseName$ArrayND
+    extends AbstractArrayND
     implements $type.uppercaseName$ArrayND
 {
     /**
-     * The underlying data
-     */
-    private final $type.uppercaseName$Tuple data;
-
-    /**
-     * A function that converts multidimensional indices to 1D indices
-     */
-    private final ToIntFunction<IntTuple> indexer;
-
-    /**
-     * Create a new array with the given backing data and size.
+     * Create a new array with the given size.
      *
-     * @param data The backing data 
      * @param size The size
-     * @throws NullPointerException If the given data or size is 
-     * <code>null</code>
+     * @param preferredIterationOrder The preferred iteration {@link Order}
+     * of this array. This may be <code>null</code> if the array does not
+     * have a preferred iteration order.
+     * @throws NullPointerException If the given size is <code>null</code>
      * @throws IllegalArgumentException If the given size is negative
      * along any dimension
      */
-    Tuple$type.uppercaseName$ArrayND($type.uppercaseName$Tuple data, IntTuple size)
+    Abstract$type.uppercaseName$ArrayND(IntTuple size, Order preferredIterationOrder)
     {
-        super(size, Order.LEXICOGRAPHICAL);
-        Objects.requireNonNull(data, "The data is null");
-        this.data = data;
-        this.indexer = Indexers.lexicographicalIndexer(size);
+        super(size, preferredIterationOrder);
     }
 
     @Override
-    public $type.name$ get(IntTuple indices)
+    public String toString()
     {
-        return data.get(indexer.applyAsInt(indices));
+        return $type.uppercaseName$ArraysND.toString(this);
     }
+
+    @Override
+    public int hashCode()
+    {
+        return $type.uppercaseName$ArraysND.hashCode(this);
+    }
+
+    @Override
+    public boolean equals(Object object)
+    {
+        return $type.uppercaseName$ArraysND.equals(this, object);
+    }
+
 
 }

@@ -29,6 +29,12 @@ package de.javagl.nd.tuples.d;
 import java.util.stream.DoubleStream;
 import java.util.stream.StreamSupport;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Methods to create streams from {@link DoubleTuple} instances.
  */

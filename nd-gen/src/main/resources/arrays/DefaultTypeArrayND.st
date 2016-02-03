@@ -24,8 +24,12 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.javagl.nd.arrays.d;
+package de.javagl.nd.arrays.$type.letter$;
 
+import java.util.function.ToIntFunction;
+
+import de.javagl.nd.arrays.Indexers;
+import de.javagl.nd.tuples.Order;
 import de.javagl.nd.tuples.i.IntTuple;
 
 /*
@@ -35,33 +39,47 @@ import de.javagl.nd.tuples.i.IntTuple;
  */
 
 /**
- * Interface describing a mutable multidimensional
- * array of <code>double</code> values.
+ * Default implementation of a {@link Mutable$type.uppercaseName$ArrayND}
  */
-public interface MutableDoubleArrayND extends DoubleArrayND
+class Default$type.uppercaseName$ArrayND
+    extends AbstractMutable$type.uppercaseName$ArrayND
+    implements Mutable$type.uppercaseName$ArrayND
 {
     /**
-     * Set the value at the given position.
-     *
-     * @param indices The position
-     * @param value The value to set.
-     * @throws IllegalArgumentException If the given indices do not have 
-     * the same {@link IntTuple#getSize() size} as the {@link #getSize()
-     * size} of this array. 
-     * @throws IndexOutOfBoundsException May be thrown if the indices are
-     * not valid. That is, if <tt>fromIndex &lt; 0</tt> or
-     * <tt>toIndex &gt; size</tt> or <tt>fromIndex &gt; toIndex</tt>
-     * for any dimension. But explicit bounds checking is not guaranteed.
+     * The underlying data
      */
-    void set(IntTuple indices, double value);
+    private final $type.name$ data[];
 
     /**
-     * {@inheritDoc}
-     * Changes in this array will be visible in the returned array.
-     * Changes in the returned array will be visible in this array.
+     * A function that converts multidimensional indices to 1D indices
      */
+    private final ToIntFunction<IntTuple> indexer;
+
+    /**
+     * Create a new array with the given size.
+     *
+     * @param size The size
+     * @throws NullPointerException If the given size is <code>null</code>
+     * @throws IllegalArgumentException If the given size is negative
+     * along any dimension
+     */
+    Default$type.uppercaseName$ArrayND(IntTuple size)
+    {
+        super(size, Order.LEXICOGRAPHICAL);
+        this.data = new $type.name$[getTotalSize()];
+        this.indexer = Indexers.lexicographicalIndexer(size);
+    }
+
     @Override
-    MutableDoubleArrayND subArray(
-        IntTuple fromIndices, IntTuple toIndices);
+    public void set(IntTuple indices, $type.name$ value)
+    {
+        data[indexer.applyAsInt(indices)] = value;
+    }
+
+    @Override
+    public $type.name$ get(IntTuple indices)
+    {
+        return data[indexer.applyAsInt(indices)];
+    }
 
 }

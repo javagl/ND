@@ -24,9 +24,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.javagl.nd.arrays.d;
-
-import de.javagl.nd.tuples.i.IntTuple;
+package de.javagl.nd.tuples.$type.letter$;
 
 /*
  * Note: This class is automatically generated. Do not modify this class
@@ -35,33 +33,60 @@ import de.javagl.nd.tuples.i.IntTuple;
  */
 
 /**
- * Interface describing a mutable multidimensional
- * array of <code>double</code> values.
+ * A {@link $type.uppercaseName$Tuple} where all elements are the same, constant value 
  */
-public interface MutableDoubleArrayND extends DoubleArrayND
+final class Constant$type.uppercaseName$Tuple extends Abstract$type.uppercaseName$Tuple 
+    implements $type.uppercaseName$Tuple
 {
     /**
-     * Set the value at the given position.
-     *
-     * @param indices The position
-     * @param value The value to set.
-     * @throws IllegalArgumentException If the given indices do not have 
-     * the same {@link IntTuple#getSize() size} as the {@link #getSize()
-     * size} of this array. 
-     * @throws IndexOutOfBoundsException May be thrown if the indices are
-     * not valid. That is, if <tt>fromIndex &lt; 0</tt> or
-     * <tt>toIndex &gt; size</tt> or <tt>fromIndex &gt; toIndex</tt>
-     * for any dimension. But explicit bounds checking is not guaranteed.
+     * The size of this tuple
      */
-    void set(IntTuple indices, double value);
+    private final int size;
 
     /**
-     * {@inheritDoc}
-     * Changes in this array will be visible in the returned array.
-     * Changes in the returned array will be visible in this array.
+     * The constant value of all elements
      */
+    private final $type.name$ value;
+
+    /**
+     * Creates a new tuple with the given size and value for all elements
+     * 
+     * @param size The size
+     * @param value The value
+     * @throws IllegalArgumentException If the size is negative
+     */
+    Constant$type.uppercaseName$Tuple(int size, $type.name$ value)
+    {
+        if (size < 0)
+        {
+            throw new IllegalArgumentException("Size is negative: "+size);
+        }
+        this.size = size;
+        this.value = value;
+    }
+
     @Override
-    MutableDoubleArrayND subArray(
-        IntTuple fromIndices, IntTuple toIndices);
+    public int getSize()
+    {
+        return size;
+    }
+
+    @Override
+    public $type.name$ get(int index)
+    {
+        if (index < 0 || index >= size)
+        {
+            throw new IndexOutOfBoundsException(
+                "Index "+index+", size "+size);
+        }
+        return value;
+    }
+
+    @Override
+    public $type.uppercaseName$Tuple subTuple(int fromIndex, int toIndex)
+    {
+        return $type.uppercaseName$Tuples.constant(toIndex - fromIndex, value);
+    }
+
 
 }

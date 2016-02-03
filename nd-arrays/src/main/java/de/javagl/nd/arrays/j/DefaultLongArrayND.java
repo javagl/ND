@@ -32,6 +32,12 @@ import de.javagl.nd.arrays.Indexers;
 import de.javagl.nd.tuples.Order;
 import de.javagl.nd.tuples.i.IntTuple;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Default implementation of a {@link MutableLongArrayND}
  */

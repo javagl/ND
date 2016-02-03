@@ -33,6 +33,12 @@ import java.util.List;
 
 import de.javagl.nd.tuples.Tuple;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Utility methods related to collections of {@link $type.uppercaseName$Tuple} 
  * instances.<br>

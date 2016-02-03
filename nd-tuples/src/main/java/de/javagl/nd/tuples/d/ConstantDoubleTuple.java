@@ -26,6 +26,12 @@
  */
 package de.javagl.nd.tuples.d;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * A {@link DoubleTuple} where all elements are the same, constant value 
  */

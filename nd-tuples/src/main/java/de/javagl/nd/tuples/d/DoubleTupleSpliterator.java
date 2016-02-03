@@ -31,6 +31,12 @@ import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.DoubleConsumer;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * A <code>Spliterator.OfDouble</code> based on a <code>DoubleTuple</code>.
  */

@@ -26,61 +26,42 @@
  */
 package de.javagl.nd.tuples.$type.letter$;
 
-/**
- * A {@link $type.uppercaseName$Tuple} where all elements are the same, constant value 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
  */
-final class Constant$type.uppercaseName$Tuple extends Abstract$type.uppercaseName$Tuple 
-    implements $type.uppercaseName$Tuple
+
+/**
+ * Abstract base implementation of a {@link $type.uppercaseName$Tuple}.<br>
+ * <br>
+ * This class implements the {@link #toString()}, {@link #equals(Object)},
+ * {@link #hashCode()} and {@link #subTuple(int, int)} methods 
+ * canonically.<br>
+ * <br> 
+ * To create an implementation of a <code>$type.uppercaseName$Tuple</code>, only the  
+ * {@link $type.uppercaseName$Tuple#getSize()} and {@link $type.uppercaseName$Tuple#get(int)} methods
+ * have to be implemented.<br>
+ * <br>
+ */
+public abstract class Abstract$type.uppercaseName$Tuple implements $type.uppercaseName$Tuple
 {
-    /**
-     * The size of this tuple
-     */
-    private final int size;
-
-    /**
-     * The constant value of all elements
-     */
-    private final $type.name$ value;
-
-    /**
-     * Creates a new tuple with the given size and value for all elements
-     * 
-     * @param size The size
-     * @param value The value
-     * @throws IllegalArgumentException If the size is negative
-     */
-    Constant$type.uppercaseName$Tuple(int size, $type.name$ value)
+    @Override
+    public String toString()
     {
-        if (size < 0)
-        {
-            throw new IllegalArgumentException("Size is negative: "+size);
-        }
-        this.size = size;
-        this.value = value;
+        return $type.uppercaseName$Tuples.toString(this);
     }
 
     @Override
-    public int getSize()
+    public int hashCode()
     {
-        return size;
+        return $type.uppercaseName$Tuples.hashCode(this);
     }
 
     @Override
-    public $type.name$ get(int index)
+    public boolean equals(Object object)
     {
-        if (index < 0 || index >= size)
-        {
-            throw new IndexOutOfBoundsException(
-                "Index "+index+", size "+size);
-        }
-        return value;
+        return $type.uppercaseName$Tuples.equals(this, object);
     }
-
-    @Override
-    public $type.uppercaseName$Tuple subTuple(int fromIndex, int toIndex)
-    {
-        return $type.uppercaseName$Tuples.constant(toIndex - fromIndex, value);
-    }
-
 
 }

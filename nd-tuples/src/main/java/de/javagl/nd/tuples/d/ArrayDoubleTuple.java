@@ -31,6 +31,12 @@ import java.util.stream.DoubleStream;
 
 import de.javagl.nd.tuples.Utils;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Implementation of a {@link MutableDoubleTuple} that is backed by 
  * a part of a <code>double[]</code> array.

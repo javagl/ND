@@ -28,6 +28,12 @@ package de.javagl.nd.tuples.j;
 
 import java.util.Objects;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Default implementation of a {@link MutableLongTuple} 
  */

@@ -39,6 +39,12 @@ import de.javagl.nd.tuples.Utils;
 
 $customImports$
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Utility methods related to {@link $type.uppercaseName$Tuple}s.<br>
  * <br>

@@ -51,7 +51,7 @@ public class NDGen
     
     public static void main(String[] args) throws IOException
     {
-        rawGroupDir = new STRawGroupDir("src/resources");
+        rawGroupDir = new STRawGroupDir("src/main/resources");
         rawGroupDir.delimiterStartChar = '$';
         rawGroupDir.delimiterStopChar = '$';
         
@@ -128,11 +128,11 @@ public class NDGen
         
         // Apologies, Terence... 
         String customMethods = 
-            readFile("./src/resources/customMethods_"+outputFileName);
+            readFile("./src/main/resources/customMethods_"+outputFileName);
         st.add("customMethods", customMethods);
 
         String customImports = 
-            readFile("./src/resources/customImports_"+outputFileName);
+            readFile("./src/main/resources/customImports_"+outputFileName);
         st.add("customImports", customImports);
         
         File outputFile = 

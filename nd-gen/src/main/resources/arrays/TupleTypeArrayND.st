@@ -31,21 +31,27 @@ import java.util.function.ToIntFunction;
 
 import de.javagl.nd.arrays.Indexers;
 import de.javagl.nd.tuples.Order;
-import de.javagl.nd.tuples.$type.letter$.Mutable$type.uppercaseName$Tuple;
+import de.javagl.nd.tuples.$type.letter$.$type.uppercaseName$Tuple;
 import de.javagl.nd.tuples.i.IntTuple;
 
-/**
- * Implementation of a {@link Mutable$type.uppercaseName$ArrayND} that is backed by a 
- * {@link Mutable$type.uppercaseName$Tuple}
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
  */
-class MutableTuple$type.uppercaseName$ArrayND
-    extends AbstractMutable$type.uppercaseName$ArrayND
-    implements Mutable$type.uppercaseName$ArrayND
+
+/**
+ * Implementation of a {@link $type.uppercaseName$ArrayND} that is backed by a 
+ * {@link $type.uppercaseName$Tuple}
+ */
+class Tuple$type.uppercaseName$ArrayND
+    extends Abstract$type.uppercaseName$ArrayND
+    implements $type.uppercaseName$ArrayND
 {
     /**
      * The underlying data
      */
-    private final Mutable$type.uppercaseName$Tuple data;
+    private final $type.uppercaseName$Tuple data;
 
     /**
      * A function that converts multidimensional indices to 1D indices
@@ -62,7 +68,7 @@ class MutableTuple$type.uppercaseName$ArrayND
      * @throws IllegalArgumentException If the given size is negative
      * along any dimension
      */
-    MutableTuple$type.uppercaseName$ArrayND(Mutable$type.uppercaseName$Tuple data, IntTuple size)
+    Tuple$type.uppercaseName$ArrayND($type.uppercaseName$Tuple data, IntTuple size)
     {
         super(size, Order.LEXICOGRAPHICAL);
         Objects.requireNonNull(data, "The data is null");
@@ -74,12 +80,6 @@ class MutableTuple$type.uppercaseName$ArrayND
     public $type.name$ get(IntTuple indices)
     {
         return data.get(indexer.applyAsInt(indices));
-    }
-
-    @Override
-    public void set(IntTuple indices, $type.name$ value)
-    {
-        data.set(indexer.applyAsInt(indices), value);
     }
 
 }

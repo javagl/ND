@@ -26,54 +26,66 @@
  */
 package de.javagl.nd.arrays.$type.letter$;
 
-import de.javagl.nd.arrays.AbstractArrayND;
+import java.util.Objects;
+import java.util.function.ToIntFunction;
+
+import de.javagl.nd.arrays.Indexers;
 import de.javagl.nd.tuples.Order;
+import de.javagl.nd.tuples.$type.letter$.Mutable$type.uppercaseName$Tuple;
 import de.javagl.nd.tuples.i.IntTuple;
 
-/**
- * Abstract base implementation of a {@link $type.uppercaseName$ArrayND}.<br>
- * <br>
- * This class implements the {@link #toString()}, {@link #equals(Object)},
- * {@link #hashCode()} and {@link #subArray(IntTuple, IntTuple)} methods 
- * canonically.<br>
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
  */
-abstract class Abstract$type.uppercaseName$ArrayND
-    extends AbstractArrayND
-    implements $type.uppercaseName$ArrayND
+
+/**
+ * Implementation of a {@link Mutable$type.uppercaseName$ArrayND} that is backed by a 
+ * {@link Mutable$type.uppercaseName$Tuple}
+ */
+class MutableTuple$type.uppercaseName$ArrayND
+    extends AbstractMutable$type.uppercaseName$ArrayND
+    implements Mutable$type.uppercaseName$ArrayND
 {
     /**
-     * Create a new array with the given size.
+     * The underlying data
+     */
+    private final Mutable$type.uppercaseName$Tuple data;
+
+    /**
+     * A function that converts multidimensional indices to 1D indices
+     */
+    private final ToIntFunction<IntTuple> indexer;
+
+    /**
+     * Create a new array with the given backing data and size.
      *
+     * @param data The backing data 
      * @param size The size
-     * @param preferredIterationOrder The preferred iteration {@link Order}
-     * of this array. This may be <code>null</code> if the array does not
-     * have a preferred iteration order.
-     * @throws NullPointerException If the given size is <code>null</code>
+     * @throws NullPointerException If the given data or size is 
+     * <code>null</code>
      * @throws IllegalArgumentException If the given size is negative
      * along any dimension
      */
-    Abstract$type.uppercaseName$ArrayND(IntTuple size, Order preferredIterationOrder)
+    MutableTuple$type.uppercaseName$ArrayND(Mutable$type.uppercaseName$Tuple data, IntTuple size)
     {
-        super(size, preferredIterationOrder);
+        super(size, Order.LEXICOGRAPHICAL);
+        Objects.requireNonNull(data, "The data is null");
+        this.data = data;
+        this.indexer = Indexers.lexicographicalIndexer(size);
     }
 
     @Override
-    public String toString()
+    public $type.name$ get(IntTuple indices)
     {
-        return $type.uppercaseName$ArraysND.toString(this);
+        return data.get(indexer.applyAsInt(indices));
     }
 
     @Override
-    public int hashCode()
+    public void set(IntTuple indices, $type.name$ value)
     {
-        return $type.uppercaseName$ArraysND.hashCode(this);
+        data.set(indexer.applyAsInt(indices), value);
     }
-
-    @Override
-    public boolean equals(Object object)
-    {
-        return $type.uppercaseName$ArraysND.equals(this, object);
-    }
-
 
 }

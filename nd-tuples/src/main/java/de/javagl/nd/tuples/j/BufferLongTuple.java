@@ -31,6 +31,12 @@ import java.util.Objects;
 
 import de.javagl.nd.tuples.Utils;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Implementation of a {@link MutableLongTuple} that is backed by 
  * a <code>LongBuffer</code>

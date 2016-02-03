@@ -28,6 +28,12 @@ package de.javagl.nd.arrays.i;
 
 import de.javagl.nd.tuples.i.IntTuple;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Interface describing a mutable multidimensional
  * array of <code>int</code> values.

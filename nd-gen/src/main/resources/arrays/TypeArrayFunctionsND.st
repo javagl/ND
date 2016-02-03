@@ -32,6 +32,12 @@ import java.util.function.$type.uppercaseName$UnaryOperator;
 
 import de.javagl.nd.arrays.Utils;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Methods that operate on {@link $type.uppercaseName$ArrayND} instances and perform
  * bulk operations with functional interfaces

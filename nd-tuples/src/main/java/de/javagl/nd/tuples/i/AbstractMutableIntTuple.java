@@ -26,6 +26,12 @@
  */
 package de.javagl.nd.tuples.i;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Abstract base implementation of a {@link MutableIntTuple}.<br>
  * <br>

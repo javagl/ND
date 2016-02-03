@@ -41,6 +41,12 @@ import de.javagl.nd.tuples.d.DoubleTuple;
 import de.javagl.nd.tuples.d.DoubleTuples;
 import de.javagl.nd.tuples.d.MutableDoubleTuple;
 
+/*
+ * Note: This class is automatically generated. Do not modify this class
+ * directly. See https://github.com/javagl/ND/tree/master/nd-gen/ for
+ * further information.
+ */
+
 /**
  * Utility methods related to {@link IntTuple}s.<br>
  * <br>
