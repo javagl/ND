@@ -41,7 +41,22 @@
  * <br>
  * Given a tuple, the next tuple in 
  * {@link de.javagl.nd.tuples.Order#LEXICOGRAPHICAL lexicographical} order
- * is computed by incrementing the <i>rightmost</i> element. <br>
+ * is computed by incrementing the <i>rightmost</i> element. When the
+ * maximum value for a particular element is reached, then the overflow 
+ * is handled by resetting the element to is minimal value, and increasing 
+ * the next element by 1. Intuitively, this is the same as <i>counting</i> 
+ * with decimal numbers:
+ * <pre><code>
+ * 000
+ * 001
+ * 002
+ * ...
+ * 009 // The maximum value for the last digit is reached
+ * 010 // The last digit is reset to 0, and the next digit is increased by 1
+ * 011
+ * 012
+ * ...
+ * </code></pre>
  * <br>
  * For example, the iteration over the range (0,0,0) to (2,2,3) in 
  * <b>lexicographical</b> order is
@@ -81,7 +96,22 @@
  * <br>
  * Given a tuple, the next tuple in 
  * {@link de.javagl.nd.tuples.Order#COLEXICOGRAPHICAL colexicographical} order
- * is computed by incrementing the <i>leftmost</i> element. <br>
+ * is computed by incrementing the <i>leftmost</i> element. When the
+ * maximum value for a particular element is reached, then the overflow 
+ * is handled by resetting the element to is minimal value, and increasing 
+ * the next element by 1. Intuitively, this is the same as <i>counting</i> 
+ * with decimal numbers, with the order of the digits being reversed:
+ * <pre><code>
+ * 000
+ * 100
+ * 200
+ * ...
+ * 900 // The maximum value for the last digit is reached
+ * 010 // The last digit is reset to 0, and the next digit is increased by 1
+ * 110
+ * 210
+ * ...
+ * </code></pre> 
  * <br>
  * For example, the iteration over the range (0,0,0) to (2,2,3) in 
  * <b>colexicographical</b> order is
@@ -140,7 +170,9 @@
  *   2 2 2 2 2
  * </code></pre>
  * Also see: <a href="https://en.wikipedia.org/wiki/Moore_neighborhood" 
- * target="_blank">Wikipedia: Moore Neighborhood</a>.<br>
+ * target="_blank">Wikipedia: Moore Neighborhood</a> and
+ * <a href="https://en.wikipedia.org/wiki/Chebyshev_distance" 
+ * target="_blank">Wikipedia: Chebyshev Distance</a>.<br>
  * <br>
  * <br>
  * <h4>Von Neumann neighborhood</h4>
@@ -155,7 +187,9 @@
  *       2    
  * </code></pre>
  * Also see: <a href="https://en.wikipedia.org/wiki/Von_Neumann_neighborhood" 
- * target="_blank">Wikipedia: Von Neumann Neighborhood</a>.<br>
+ * target="_blank">Wikipedia: Von Neumann Neighborhood</a> and 
+ * <a href="https://en.wikipedia.org/wiki/Manhattan_distance" 
+ * target="_blank">Wikipedia: Manhattan Distance</a>.<br>
  *  
  * 
  */
