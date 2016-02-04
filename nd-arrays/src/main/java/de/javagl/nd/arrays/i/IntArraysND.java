@@ -34,10 +34,8 @@ import de.javagl.nd.arrays.Coordinates;
 import de.javagl.nd.arrays.Utils;
 import de.javagl.nd.tuples.i.IntTuple;
 import de.javagl.nd.tuples.i.MutableIntTuple;
-import de.javagl.nd.tuples.i.IntTuple;
 import de.javagl.nd.tuples.i.IntTupleFunctions;
 import de.javagl.nd.tuples.i.IntTuples;
-import de.javagl.nd.tuples.i.MutableIntTuple;
 import de.javagl.nd.iteration.tuples.i.IntTupleIterables;
 
 /*
@@ -292,7 +290,7 @@ public class IntArraysND
         {
             return 0;
         }
-        return array.stream().parallel().mapToInt(Integer::hashCode).sum();
+        return array.stream().parallel().map(Integer::hashCode).sum();
     }
 
     /**
